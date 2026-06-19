@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+.streamlit/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.dcm
+*.dicom
+uploaded_dicoms/
+test_dicoms/
+*.log
+.env

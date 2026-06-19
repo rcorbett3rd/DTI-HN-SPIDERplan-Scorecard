@@ -1,0 +1,6 @@
+streamlit>=1.35
+pydicom>=2.4
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+plotly>=5.22
