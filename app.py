@@ -230,7 +230,7 @@ with st.sidebar:
     )
 
 if not uploaded_files:
-    st.info("Upload RP + RS + RD files to generate the SPIDERPlan scorecard.")
+    st.info("Upload RP + RS + RD files to generate the SPIDERplan scorecard.")
     st.stop()
 
 try:
@@ -263,7 +263,7 @@ try:
         missing.append("RT Dose / RD")
 
     if missing:
-        st.error("Full SPIDERPlan scoring requires: " + ", ".join(missing) + ".")
+        st.error("Full SPIDERplan scoring requires: " + ", ".join(missing) + ".")
         st.info("Use the Readiness App for RP/RS pre-checks without RD. This Full DVH app waits until all required files are present.")
         st.stop()
 
@@ -334,7 +334,7 @@ try:
             priority_structures=priority_structures,
         )
 
-    progress.progress(70, text="DVH metrics calculated. Building SPIDERPlan scorecard...")
+    progress.progress(70, text="DVH metrics calculated. Building SPIDERplan scorecard...")
 
     if dvh_df is None or dvh_df.empty:
         st.error("No DVH metrics could be calculated. The app did not crash, but the RD/RS geometry may not align or pixel data may be unreadable.")
@@ -358,16 +358,16 @@ try:
     grade = final_grade(domain_df)
     fig = make_spider_chart(domain_df)
 
-    progress.progress(100, text="SPIDERPlan scorecard ready.")
+    progress.progress(100, text="SPIDERplan scorecard ready.")
     progress.empty()
 
     st.markdown("---")
-    st.header("SPIDERPlan Scorecard Snapshot")
+    st.header("SPIDERplan Scorecard Snapshot")
     st.caption("Immediate plan-quality overview using per-target Rx values, helper-contour exclusions, optic-structure scoring, PTV_eval V105% review, and a separate global max hotspot location review.")
 
     s1, s2, s3, s4 = st.columns(4)
-    s1.metric("Final SPIDERPlan Score", f"{grade.get('score', 0)}")
-    s2.metric("Final SPIDERPlan Grade", str(grade.get("grade", "N/A")))
+    s1.metric("Final SPIDERplan Score", f"{grade.get('score', 0)}")
+    s2.metric("Final SPIDERplan Grade", str(grade.get("grade", "N/A")))
     s3.metric("Scored Structures", 0 if metric_df is None else len(metric_df[pd.to_numeric(metric_df.get("score"), errors="coerce").notna()]))
     s4.metric("PTV_eval Reviews", len(eval_names))
 
